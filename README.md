@@ -1,1 +1,34 @@
-## Bioinformatics Intro
+## Intro to Bioinformatics
+
+- Pattern Matching
+  - Z Algorithm
+  - KMP Algorithm
+  - Hamming Distance, Skew
+- Motif Search
+  - Greedy
+  - Randomized
+  - Gibbs Sample
+- Proteomics
+  - Theoretical Spectrum
+  - Leaderboard
+- Sequence Alignment
+  - Longest Common Subsequence
+  - Longest Path in DAG
+  - Local Alignment
+  - Global Alignment
+  - Topological Ordering of DAG
+- Sequence Indexing
+  - Trie Matching
+  - Suffix Tree
+  - Suffix Array
+  - Burrows Wheeler Transform
+- Clustering
+  - K Means
+- Phylogenetics
+  - Neighbor Joining
+  - Small Parsimony
+  - Nearest Neighbors
+- Genome Assembly
+  - DeBruijn Graph
+  - Eulerian Cycle and Path
+  - Maximal Nonbranching
