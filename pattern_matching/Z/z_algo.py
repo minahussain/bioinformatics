@@ -27,12 +27,12 @@ def z_value(S, s):
 
 def z_efficient(S):
 	Z = [0] * len(S)		
-	rt = lt = 0 	# z box right and left border index
+	rt = lt = 0 						# Z box right and left index
 	Z[0] = len(S)
 
 	for i in range(1,len(S)):
 		if i > rt:						# outside Z box, new comparisons
-			Z[i] = z_value(S, S[i:])	# naive computation
+			Z[i] = z_value(S, S[i:])		# naive computation
 			lt = i
 			rt = i + Z[i]-1
 		else:							# inside Z box, use Z value pair
@@ -51,15 +51,11 @@ def z_efficient(S):
 
 class TestZAlgo(unittest.TestCase):
 	def test_naive(self):
-		self.assertEqual('15 0 2 0 0 4 0 2 0 0 3 0 1 0 1', 
-						z_naive('ABABXABABYABACA'))
-		self.assertEqual('11 0 1 1 0 3 0 4 0 1 1',
-						z_naive('abaacababaa'))
+		self.assertEqual('15 0 2 0 0 4 0 2 0 0 3 0 1 0 1', z_naive('ABABXABABYABACA'))
+		self.assertEqual('11 0 1 1 0 3 0 4 0 1 1', z_naive('abaacababaa'))
 	def test_efficient(self):
-		self.assertEqual('15 0 2 0 0 4 0 2 0 0 3 0 1 0 1', 
-						z_efficient('ABABXABABYABACA'))
-		self.assertEqual('11 0 1 1 0 3 0 4 0 1 1',
-						z_efficient('abaacababaa'))
+		self.assertEqual('15 0 2 0 0 4 0 2 0 0 3 0 1 0 1', z_efficient('ABABXABABYABACA'))
+		self.assertEqual('11 0 1 1 0 3 0 4 0 1 1', z_efficient('abaacababaa'))
 
 
 if __name__ == "__main__":
