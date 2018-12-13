@@ -31,15 +31,15 @@ def z_efficient(S):
 	Z[0] = len(S)
 
 	for i in range(1,len(S)):
-		if i > rt:						# outside Z box, new comparisons
-			Z[i] = z_value(S, S[i:])		# naive computation
+		if i > rt:						# outside Z box, naive
+			Z[i] = z_value(S, S[i:])
 			lt = i
 			rt = i + Z[i]-1
 		else:							# inside Z box, use Z value pair
 			p = i - lt 					
 			if Z[p] < rt - i + 1:
 				Z[i] = Z[p]
-			else:						# end Z box, new comparisons
+			else:						# end Z box, naive
 				j = rt + 1
 				while j < len(S) and S[j] == S[j - i]:
 					j += 1
