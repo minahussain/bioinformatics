@@ -13,9 +13,9 @@
   - Leaderboard
 - Sequence Alignment
   - Longest Common Subsequence
-  - Longest Path in DAG
   - Local Alignment
   - Global Alignment
+  - Longest Path in DAG
   - Topological Ordering of DAG
 - Sequence Indexing
   - Trie Matching
