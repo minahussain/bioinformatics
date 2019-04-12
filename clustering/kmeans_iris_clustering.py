@@ -5,41 +5,24 @@
 import pandas as pd
 import numpy as np
 import math
-
-from sklearn.datasets import make_moons, make_circles, make_blobs
-from sklearn.datasets import make_gaussian_quantiles
-
 from sklearn.cluster import KMeans, DBSCAN, SpectralClustering, AgglomerativeClustering
-from scipy.cluster.hierarchy import dendrogram, linkage
-
 import matplotlib.pyplot as plt
-import seaborn as sns; sns.set()
-
-from sklearn.datasets import load_iris
+# from sklearn.datasets import load_iris
 
 
-# setting up iris data
-
-fp = pd.read_csv('iris.csv')
-fp = fp.drop(['id'], axis=1)
-iris_arr = np.array(fp.iloc[:,:-1])
-
-
-# # Kmeans Clustering
+## Kmeans Clustering
 
 # returns list of pairs of k and its ssd
+# and plots so can view if there is an elbow
 def find_opt_k(data):
     k_list = range(1,10)
-    ssd = [KMeans(n_clusters=i, random_state=None, max_iter=1000).fit(arr).inertia_ for i in k_list]
+    ssd = [KMeans(n_clusters=i, random_state=None, max_iter=1000).fit(data).inertia_ for i in k_list]
     plt.plot(k_list, ssd, 'X-')
     plt.xlabel('k')
     plt.ylabel('Sum_of_squared_distances')
     plt.title('Elbow Method For Optimal k')
+    plt.show()
     return [i for i in zip(k_list, ssd)]
-
-
-find_opt_k(iris_arr)
-
 
 def sse_funct(points, centroid):
     d = 0
@@ -93,8 +76,16 @@ def bisecting_kmeans(k, data):
     return len(clusters), sum(sse_funct(points, center) for points,center in zip(clusters, final_centers))
 
 
-bisecting_kmeans(3, iris_arr)
-bisecting_kmeans(4, iris_arr)
-bisecting_kmeans(2, iris_arr)
+if __name__ == "__main__":
+    # set up iris data
+    fp = pd.read_csv('iris.csv')
+    fp = fp.drop(['id'], axis=1)
+    iris_arr = np.array(fp.iloc[:,:-1]) 
+
+    find_opt_k(iris_arr)
+
+    bisecting_kmeans(3, iris_arr)
+    bisecting_kmeans(4, iris_arr)
+    bisecting_kmeans(2, iris_arr)
 
 
